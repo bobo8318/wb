@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mpdemo.dao.UserDao" >
+    <insert id="userInsert" parameterType="com.example.mpdemo.entity.User">
+        insert into tianjun_test (id,name,age) values (#{user.id},#{user.name},#{user.age})
+    </insert>
+
+    <select id="queryById" resultType="com.example.mpdemo.entity.User">
+        select * from tianjun_test where id = #{id}
+    </select>
+</mapper>
