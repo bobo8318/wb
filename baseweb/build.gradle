@@ -1,0 +1,38 @@
+group 'openui'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+
+repositories {
+    jcenter()
+    maven { url 'http://maven.oschina.net/content/groups/public/' }
+}
+
+dependencies {
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //从maven仓库导入依赖
+    compile ('org.apache.httpcomponents:httpclient:4.4')
+    compile ('org.apache.commons:commons-lang3:3.3.2')
+    compile 'jstl:jstl:1.2'
+    compile 'com.alibaba:druid:1.0.15'
+    compile 'org.apache.tomcat:tomcat-servlet-api:8.0.24'
+    compile 'mysql:mysql-connector-java:5.1.36'
+
+    compile 'org.springframework:spring-beans:4.1.7.RELEASE'
+    compile 'org.springframework:spring-web:4.1.7.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.1.7.RELEASE'
+    compile 'org.springframework:spring-tx:4.1.7.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.1.7.RELEASE'
+    compile 'junit:junit:4.12'
+    compile 'org.springframework:spring-test:4.0.5.RELEASE'
+    // https://mvnrepository.com/artifact/c3p0/c3p0
+    compile  'c3p0:c3p0:0.9.1.2'
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    compile group: 'com.belerweb', name: 'pinyin4j', version: '2.5.0'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.7'
+
+
+}

@@ -15,9 +15,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ResponseBody
     @RequestMapping("/hello")
     public List<User> listAll() {
-        return userService.listAll();
+        return userService.queryById(1);
     }
 }

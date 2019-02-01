@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>修改用户信息</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet">
+
+    <style>
+
+        .form-box{
+            background-color: aliceblue;
+            border: none;
+        }
+
+        .panel{
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+
+        <div class="navbar-header">
+            <div class="navbar-brand">骡子系统</div>
+
+            <ul class="nav navbar-nav">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">雷达</a></li>
+                <li><a href="#">数据管理</a></li>
+                <li><a href="#">用户管理</a></li>
+            </ul>
+
+
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">登录</a></li>
+            <li><a href="#">退出</a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="container">
+
+    <ol class="breadcrumb">
+            <li>返回</li>
+            <li>修改用户信息</li>
+    </ol>
+
+    <h3>修改用户信息</h3>
+    <hr>
+    <form action="/user/update" method="post" class="form-horizontal">
+        <input type="hidden" name="id" th:value="${user.id}"/>
+        <div class="form-group">
+            <label class="control-label col-md-2">用户名</label>
+            <div class="col-md-5">
+                <p class="form-control-static" th:text="${user.username}"></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="password">新密码</label>
+            <div class="col-md-5">
+                <input class="form-control" name="password" id="password" placeholder="新密码" type="password" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="repassword">确认新密码</label>
+            <div class="col-md-5">
+                <input class="form-control" name="repassword" id="repassword" placeholder="确认新密码" type="password">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="role">用户身份</label>
+            <div class="col-md-5">
+                <select name="role" id="role" class="form-control" value="admin">
+                    <option value="ROLE_USER" th:selected="${ user.role == 'ROLE_USER'}">普通用户</option>
+                    <option value="ROLE_ADMIN"  th:selected="${ user.role == 'ROLE_ADMIN'}">管理员</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-5">
+                <input type="submit" class="btn btn-default" value="确认">
+                <input type="reset" class="btn btn-default" value="取消">
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer class="footer navbar-fixed-bottom navbar-default">
+    <div class="container">
+        郝文浩设计制作<br>
+    </div>
+</footer>
+
+
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js" th:src="@{/webjars/jquery/1.9.1/jquery.js}"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+<script src="#" th:src="@{/webjars/d3js/4.10.2/d3.js}"></script>
+<script src="https://cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
+</body>
+</html>

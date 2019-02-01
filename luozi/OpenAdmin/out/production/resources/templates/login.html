@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>系统登录234</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body class="text-center">
+<form class="form-signin" action="dashboard.html" th:action="@{/admin/login}" method="post">
+    <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">请登录</h1>
+    <!---->
+    <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+
+<div class="form-group">
+    <label class="sr-only" th:text="#{login.username}">Username</label>
+    <input type="text"  name="username" class="form-control" placeholder="username" th:placeholder="#{login.username}"  required="" autofocus="">
+</div>
+   
+   <div class="form-group">
+    <label class="sr-only" th:text="#{login.password}">Password</label>
+    <input type="password" name="password" class="form-control" placeholder="password" th:placeholder="#{login.password}" required="">
+    </div>
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"/> [[#{login.remember}]]
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">Sign in</button>
+
+</form>
+</body>
+
+</html>

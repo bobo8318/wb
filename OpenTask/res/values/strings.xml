@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OpenTask</string>
+    <string name="filename">video file name!</string>
+    <string name="action_settings">openTask Settings</string>
+    
+    <string name="start">start</string>
+    <string name="pause">pause</string>
+     <string name="end">end</string>
+     <string name="restart">restart</string>
+     
+     
+     <string name="userName">UserName</string>
+     <string name="btn_reset">reset</string>
+     <string name="password">password</string>
+     <string name="btn_login">Login</string>
+     
+     <string name="info">info</string>
+     <string name="last">上期中奖号码:</string>
+     
+      <string name="search">search</string>
+      <string name="next">next</string>
+      <string name="pre">pre</string>
+       <string name="pageinfo">pageinfo</string>
+       
+       <string name="cp">彩票</string>
+        <string name="card">卡片</string>
+        <string name="myMsg">记事本</string>
+        <string name="game">游戏</string>
+        <string name="title">title</string>
+
+</resources>

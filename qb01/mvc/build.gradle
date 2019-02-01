@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.2.RELEASE'
+    }
+    repositories {
+        //mavenCentral()
+        maven  {url 'http://localhost:8081/nexus/content/repositories/central/'}
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'cn.openui.springbootmvc'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    //
+    maven  {url 'http://localhost:8081/nexus/content/repositories/central/'}
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+    compile('org.springframework.boot:spring-boot-starter-data-couchbase')
+
+    compile('mysql:mysql-connector-java')
+    compile('com.alibaba:druid')
+
+
+    compile('org.webjars:jquery:1.9.1')
+    compile('org.webjars:bootstrap:3.3.6')
+    compile group: 'org.webjars', name: 'd3js', version: '4.10.2'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}

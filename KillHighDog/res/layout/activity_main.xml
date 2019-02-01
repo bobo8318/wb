@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+   android:orientation="vertical"
+>
+  <RelativeLayout 
+         android:layout_width="fill_parent"
+    	 android:layout_height="wrap_content"
+    	 android:background="#FFEC8B"
+        >
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"  
+        android:text="@string/stepts" />
+    
+     <ImageView
+             android:id="@+id/header"
+             android:layout_width="20dp"  
+           	 android:layout_height="20dp"  
+             android:layout_centerInParent="true"  
+             android:background="@drawable/doge"
+         />
+    
+     <TextView
+        android:id="@+id/totalInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"  
+        android:text="@string/totalInfo" />
+    </RelativeLayout>
+     
+      
+    
+    <FrameLayout  
+       android:layout_width="fill_parent" 
+       android:layout_height="wrap_content">  
+       <cn.openui.aty.BackGround  
+           android:id="@+id/backGround" 
+           android:layout_width="fill_parent" 
+           android:layout_height="fill_parent">  
+       </cn.openui.aty.BackGround>  
+    </FrameLayout>
+    
+   
+
+</LinearLayout>

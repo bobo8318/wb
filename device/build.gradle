@@ -1,0 +1,23 @@
+group 'openui'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.5
+
+repositories {
+    jcenter()
+    maven { url 'http://maven.oschina.net/content/groups/public/' }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+    //从maven仓库导入依赖
+    compile ('org.apache.httpcomponents:httpclient:4.4')
+    compile ('org.apache.commons:commons-lang3:3.3.2')
+    compile 'jstl:jstl:1.2'
+    compile 'mysql:mysql-connector-java:5.1.36'
+}

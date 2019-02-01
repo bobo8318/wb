@@ -20,11 +20,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 
-@ServletComponentScan
 @EnableWebMvc
-@EnableAutoConfiguration
 @SpringBootApplication
-@ComponentScan
 @MapperScan("cn.openui.qb01.mapper")
 public class Qb01Application extends SpringBootServletInitializer {
     //private static Logger logger = Logger.getLogger(Application.class);

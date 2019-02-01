@@ -1,0 +1,44 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		maven{ url 'http://localhost:8081/nexus/content/repositories/central'}
+		maven{ url 'http://localhost:8081/nexus/content/repositories/openui'}
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'cn.openui'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	maven{ url 'http://localhost:8081/nexus/content/repositories/central'}
+	maven{ url 'http://localhost:8081/nexus/content/repositories/openui'}
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.44'
+	compile group: 'com.google.zxing', name: 'zxing', version: '2.3'
+	compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.8.0-beta1'
+	compile group: 'commons-lang', name: 'commons-lang', version: '20030203.000129'
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
+	compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.2'
+	compile group: 'com.google.guava', name: 'guava', version: '24.1-jre'
+
+}

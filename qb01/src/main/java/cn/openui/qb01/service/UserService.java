@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class UserService implements IUserService{
     @Autowired
-    private UserDao dao;
+    private UserMapper mapper;
 
     @Override
     public Integer userInsert(User user) {
@@ -19,7 +19,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public User queryById(Integer id) {
-        return dao.queryById(id);
+    public List<User> queryById(Integer id) {
+        return mapper.selectAll();
     }
 }

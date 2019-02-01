@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;openui&apos;&#x0D;&#x0A;- Original project: &apos;openui&apos;&#x0D;&#x0A;- Original element: &apos;openui/src/cn.openui.opentask.net&apos;" description="Delete element" element1="/src&lt;cn.openui.opentask.net" element2="/src&lt;cn.openui.opentask" element3="/src&lt;cn.openui" element4="/src&lt;cn" elements="4" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1466689116618" subPackages="false" version="1.0"/>
+</session>

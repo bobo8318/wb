@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">KillHighDog</string>
+    <string name="stepts">步数：0</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="win">高狗已经走投无路，请享受它的菊花吧</string>
+    <string name="lose">高狗竟然顺利逃亡 你输了</string>
+    <string name="tx0">新的一局开始，有种你就打死我</string>
+    <string name="tx">高狗表示你很菜，根本抓不到我</string>
+     <string name="totalInfo">成功：失败：</string>
+
+</resources>

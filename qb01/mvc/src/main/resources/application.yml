@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    username: docker
+    password: tcuser
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql//192.168.3.4:3306/jdbc
+    type: com.alibaba.druid.pool.DruidDataSource

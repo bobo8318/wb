@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/openui.iml" filepath="$PROJECT_DIR$/.idea/modules/openui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/openui_main.iml" filepath="$PROJECT_DIR$/.idea/modules/openui_main.iml" group="openui" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/openui_test.iml" filepath="$PROJECT_DIR$/.idea/modules/openui_test.iml" group="openui" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/www.openuicn.iml" filepath="$PROJECT_DIR$/.idea/modules/www.openuicn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/www.openuicn_main.iml" filepath="$PROJECT_DIR$/.idea/modules/www.openuicn_main.iml" group="www.openuicn" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/www.openuicn_test.iml" filepath="$PROJECT_DIR$/.idea/modules/www.openuicn_test.iml" group="www.openuicn" />
+    </modules>
+  </component>
+</project>

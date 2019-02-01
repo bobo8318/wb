@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+
+	<page id="adminPage" js="/webresources/script/validate.js" >
+		<report id="adminReport" title="管理员表" type="editablelist2"  pagesize="10" scrollstyle="image" dataexport="richexcel">
+		<interceptor>
+	<preaction>
+		
+		</preaction>
+	</interceptor>	
+			<display>
+				<col column="{sequence:1}" label="序号" width="5%"/>
+				<col column="adminid" displaytype="hidden"/>
+				
+				<col column="adminName" label="姓名" clickorderby="true">
+				<inputbox jsvalidate="isNotEmpty(${invalid.isnotempty})"/>
+				</col>
+				<col column="loginName" label="登录名" clickorderby="true">
+				<inputbox jsvalidate="isNotEmpty(${invalid.isnotempty})"/>
+				</col>
+				<col column="loginPwd" label="密码" clickorderby="true">
+				<inputbox jsvalidate="isNotEmpty(${invalid.isnotempty})"/>
+				</col>
+				<col column="userType" label="用户类型" clickorderby="true">
+				<inputbox type="selectbox">
+						<option value="0" label="部门管理员" />
+						<option value="1" label="系统管理员" />
+					</inputbox>
+				</col>
+				<col column="unit" label="部门" displaytype="hidden"></col>
+				<col column="unitname" label="所属部门" filter="true" filterwidth="120px" updatecol="@{unit}" >
+					<inputbox type="selectbox">
+					     <option dataset="@{select * from unit}" label="unitname" value="unitcode"></option>
+				    </inputbox>
+				</col>
+				
+			</display>
+			<footer><![CDATA[]]></footer>
+			<sql>
+				<select>
+				<value>
+					<![CDATA[SELECT a.*,b.unitname from admin as a,unit as b where a.unit = b.unitcode and {#condition#} order by b.unitid]]>
+				</value>
+				
+				<condition name="adminName" label="管理员名">
+					<value>
+						<![CDATA[(adminName like '%#data#%' )]]>
+					</value>
+				</condition>
+				<condition name="unit" label="部门">
+					<value>
+						<![CDATA[(b.unitcode like '#data#%' )]]>
+					</value>
+					<inputbox type="selectbox">
+					<option value="" label="部门"></option>
+						<option dataset="@{select * from unit}" label="unitname" value="unitcode"></option>
+					</inputbox>
+				</condition>
+				</select>
+				  <insert>
+		  		 insert into admin(@{adminName},@{loginName},@{loginPwd},@{userType},@{unit});
+			  </insert>
+			  <update>
+			     update admin(@{adminName},@{loginName},@{loginPwd},@{userType},@{unit}) where adminid=@{adminid};
+			  </update>
+			  <delete>
+			  	 delete from admin where adminid=@{adminid};
+			  </delete>
+			</sql>
+			<format>
+			  <value>
+			  	<![CDATA[
+			  		
+			  		if("0".equals(userType)) userType = "部门管理员";
+			    	else if("1".equals(userType)) userType = "系统管理员";
+			    	
+			    	
+			  	]]>
+			  </value>
+			</format>
+		</report>
+		 
+		
+
+
+
+	</page>
+</applications>

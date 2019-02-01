@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:background="#D1EEEE"
+    >
+    
+    
+     <Button
+         		android:id="@+id/btn_main_cp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:background="#6495ED"
+                 android:layout_margin="5dp"
+                 android:padding="3dp"
+                android:text="@string/cp" 
+                >
+                
+            </Button>
+
+            <Button
+                android:id="@+id/btn_main_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:background="#6495ED"
+                  android:layout_margin="5dp"
+                   android:padding="3dp"
+                android:text="@string/card" >
+            </Button>
+
+            <Button
+                android:id="@+id/btn_main_myMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:background="#6495ED"
+                  android:layout_margin="5dp"
+                   android:padding="3dp"
+                android:text="@string/myMsg" >
+            </Button>
+            
+         
+    
+    
+</TableLayout>
+   

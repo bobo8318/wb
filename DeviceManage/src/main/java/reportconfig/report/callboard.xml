@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+			   <local-cssfiles>
+      
+    </local-cssfiles>
+	<page id="CallBoardShow">
+			<report id="CallBoardShowReport" title="公告" border="horizontal2"  pagesize="5">
+<interceptor>
+	<preaction>
+	 	<![CDATA[
+			//rrequest.getRequest().getSession().setAttribute("adminid", "123");//将测试数据放入session中
+		]]>
+		</preaction>
+	</interceptor>
+			<display dataheader="">
+				<col column="affichetitle" label="标题" clickorderby="true" width="10%">
+					
+				</col>
+				<col column="affichecontent" label="内容">
+					
+				</col>
+				<col column="affichedate" label="发布时间" datatype="date{yyyy-MM-dd}" clickorderby="true" width="10%">
+					
+				</col>
+				
+			</display>
+		
+			<sql>
+				<select>
+				<value>
+					<![CDATA[SELECT a.* from callboard a left join admin b on a.releaseadmin=b.adminid where {#condition#} order by afficheid desc]]>
+				</value>
+				</select>
+			</sql>
+			<format>
+			  
+			     <value>
+			    <![CDATA[
+			  		
+						affichetitle += ":";
+						affichecontent=affichecontent==null?"":affichecontent.trim();
+						if(!affichecontent.equals(""))
+						{
+							String fulldesc=affichecontent;
+							if(affichecontent.length()>50) affichecontent=affichecontent.substring(0,50)+"...";
+							affichecontent=affichecontent.replaceAll("<p>","");
+							affichecontent=affichecontent.replaceAll("</p>","");
+							affichecontent="  <span onmouseover=\"this.style.cursor='pointer'\"  onclick=\"wx_win('"+fulldesc+"',{title:'"+affichetitle+"',width:300,drag:true})\">"+affichecontent+"</span>";
+							//affichecontent=affichecontent+"  <font color='#505050'>["+affichedate+"]</font>";
+						}
+				]]>
+			  </value>
+			  </format>
+		</report>
+			</page>
+</applications>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;OpenTask/res/layout/aty_main.xml&apos; to &apos;aty_cp.xml&apos;" description="Rename resource &apos;aty_main.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/layout/aty_main.xml" name="aty_cp.xml" stamp="1473080228170" updateReferences="true"/>
+</session>

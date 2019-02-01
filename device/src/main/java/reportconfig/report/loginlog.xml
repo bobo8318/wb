@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+			   <local-cssfiles>
+      
+    </local-cssfiles>
+	<page id="loginLogPage">
+		<report id="loginlogreport" title="登录日志" pagesize="15" scrollstyle="image" dataexport="richexcel">
+		<interceptor>
+		 <imports> 
+           				<import>java.util.*</import> 
+           				<import>java.text.*</import> 
+         			</imports> 
+	<preaction>
+		String date = rrequest.getStringAttribute("logindate","");//
+		    		if(date.equals(""))
+		    				{//如果用户没输入时间		    	
+		    					 DateFormat format = new SimpleDateFormat("yyyy-MM-dd");				
+		    					rrequest.setAttribute("logindate", format.format(new Date()));//设置默认时间
+		    				}
+		</preaction>
+	</interceptor>	
+			<display>
+				<col column="{sequence:1}" label="序号"/>
+				<col column="logid" displaytype="hidden"/>
+				<col column="adminname" label="姓名" clickorderby="true"></col>
+				<col column="unitname" label="部门" clickorderby="true"></col>
+				<col column="logindate" label="登录时间" clickorderby="true"></col>
+				<col column="userType" label="用户类别" clickorderby="true"></col>
+				<col column="loginip" label="登陆ip" clickorderby="true"></col>
+			</display>
+			<sql>
+				<select>
+				<value>
+					<![CDATA[SELECT a.*,b.adminname,c.unitname from loginlog a left join admin b on a.adminid = b.adminid left join unit c on b.unit=c.unitcode where {#condition#} order by logindate desc
+					]]>
+				</value>
+				<condition name="logindate" label="登录时间">
+					<value>
+						<![CDATA[(logindate like  '%#data#%' )]]>
+					</value>
+					<inputbox type="datepicker"></inputbox>
+				</condition>
+				<condition name="userType" label="用户类别">
+					<value>
+						<![CDATA[(userType like  '%#data#%' )]]>
+					</value>
+					<inputbox type="selectbox">
+						<option value="" label="全部"></option>
+						<option value="1" label="管理员用户"></option>
+						<option value="0" label="个人用户"></option>
+					</inputbox>
+				</condition>
+				</select>
+				
+			</sql>
+			
+		</report>
+	</page>
+</applications>

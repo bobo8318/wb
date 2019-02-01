@@ -1,0 +1,8 @@
+package www.openui.cn;
+
+public class CameraController {
+	
+	public getCameraInfo(){
+		
+	}
+}

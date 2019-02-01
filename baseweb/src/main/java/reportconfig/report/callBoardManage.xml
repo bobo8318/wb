@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+			   <local-cssfiles>
+      
+    </local-cssfiles>
+	<page id="CallBoardManagePage" js="/webresources/script/validate.js" >
+			<report id="CallBoardManageReport" title="公告管理" type="editablelist2" dataexport="richexcel"  pagesize="15">
+<interceptor>
+	<preaction>
+	 	<![CDATA[
+			//rrequest.getRequest().getSession().setAttribute("adminid", "123");//将测试数据放入session中
+		]]>
+		</preaction>
+	</interceptor>
+			<display>
+				<col column="{sequence:1}" label="序号" width="5%"/>
+				<col column="afficheid" displaytype="hidden"/>
+				<col column="affichetitle" label="标题" clickorderby="true" width="20%">
+					<inputbox jsvalidate="isNotEmpty(${invalid.isnotempty})" type="textareabox"/>
+				</col>
+				<col column="affichecontent" label="内容" clickorderby="true" >
+					<inputbox jsvalidate="isNotEmpty(${invalid.isnotempty})" type="textareabox"/>
+				</col>
+				<col column="affichedate" label="发布时间" datatype="date{yyyy-MM-dd}" clickorderby="true" width="10%">
+					<inputbox type="datepicker" jsvalidate="isDate({0}格式不对，必须为yyyy-MM-dd格式)"></inputbox>
+				</col>
+				
+			</display>
+			<footer><![CDATA[<font color='red'>公告栏内容显示，显示前10条公告</font>]]></footer>
+			<sql>
+				<select>
+				<value>
+					<![CDATA[SELECT a.* from callboard a left join admin b on a.releaseadmin=b.adminid where {#condition#} order by afficheid desc]]>
+				</value>
+				</select>
+				 <insert>
+				  <params>
+			  	 	     <param name="adminid" value="session{admininfo.adminid}"></param>
+			  	     </params>
+			  	     <value>
+				 insert into callboard(@{affichetitle},@{affichecontent},@{affichedate},releaseadmin=#{adminid});
+				 </value>
+				 </insert>
+			  <update>
+			     update callboard(@{affichetitle},@{affichecontent},@{affichedate}) where afficheid=@{afficheid};
+			  </update>
+			  <delete>
+			  	 delete from callboard where afficheid=@{afficheid};
+			  </delete>
+			</sql>
+			<format>
+			  
+			     <value>
+			    <![CDATA[
+			  		
+						]]>
+			  </value>
+			  </format>
+		</report>
+			</page>
+</applications>

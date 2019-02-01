@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+
+	<page id="unitPage">
+		<report id="unitReport" title="部门管理" type="editablelist2"  pagesize="10" scrollstyle="image" dataexport="richexcel">
+		<interceptor>
+	<preaction>
+		
+		</preaction>
+	</interceptor>	
+			<display>
+				<col column="{sequence:1}" label="序号" width="5%"/>
+				<col column="unitid" displaytype="hidden"/>
+				
+				<col column="unitname" label="部门名称" clickorderby="true">
+				<inputbox jsvalidate="isNotEmpty(${invalid.isnotempty})"/>
+				</col>
+				<col column="unitcode" label="部门编码" clickorderby="true">
+				<inputbox jsvalidate="isNotEmpty(${invalid.isnotempty})"/>
+				</col>
+				
+			</display>
+			<footer><![CDATA[]]></footer>
+			<sql>
+				<select>
+				<value>
+					<![CDATA[SELECT * from unit where {#condition#} order by unitid]]>
+				</value>
+				
+				
+				<condition name="unitname" label="部门名称">
+					<value>
+						<![CDATA[(unitname like '%#data#%' )]]>
+					</value>
+					
+				</condition>
+				</select>
+				  <insert>
+		  		 insert into unit(@{unitname},@{unitcode});
+			  </insert>
+			  <update>
+			     update unit(@{unitname},@{unitcode}) where unitid=@{unitid};
+			  </update>
+			  <delete>
+			  	 delete from unit where unitid=@{unitid};
+			  </delete>
+			</sql>
+			<format>
+			  <value>
+			  	<![CDATA[
+			  		
+			  	
+			    	
+			    	
+			  	]]>
+			  </value>
+			</format>
+		</report>
+		 
+		
+
+
+
+	</page>
+</applications>

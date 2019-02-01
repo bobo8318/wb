@@ -1,0 +1,47 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : openui : device-1.0-SNAPSHOT.war">
+    <output-path>$PROJECT_DIR$/out/artifacts/device</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$" />
+    </properties>
+    <root id="archive" name="device-1.0-SNAPSHOT.war">
+      <element id="javaee-facet-resources" facet="device_main/web/Web Gradle : device-1.0-SNAPSHOT.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="device_main" />
+          <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/aopalliance-1.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-logging-1.2.jar" />
+          <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpclient:4.4" />
+          <element id="library" level="project" name="Gradle: org.apache.commons:commons-lang3:3.3.2" />
+          <element id="library" level="project" name="Gradle: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:5.1.36" />
+          <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpcore:4.4" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-aop-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-aspects-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-beans-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-context-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-context-support-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-core-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-expression-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-instrument-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-instrument-tomcat-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-jdbc-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-jms-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-messaging-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-orm-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-oxm-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-test-4.3.4.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-tx-4.3.4.RELEASE.jar" />
+          <element id="library" level="project" name="Gradle: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Gradle: commons-codec:commons-codec:1.9" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/device/exploded/device-1.0-SNAPSHOT.war/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+			   <local-cssfiles>
+      
+    </local-cssfiles>
+	<page id="messagePushPage" js="/webresources/script/validate.js" >
+			<report id="messagePushReport" title="消息发送" type="editablelist2" dataexport="richexcel"  pagesize="15">
+<interceptor>
+	<preaction>
+	 	<![CDATA[
+			//rrequest.getRequest().getSession().setAttribute("adminid", "123");//将测试数据放入session中
+		]]>
+		</preaction>
+	</interceptor>
+			<display>
+				<col column="{sequence:1}" label="序号" width="5%"/>
+				<col column="messageid" displaytype="hidden"/>
+				<col column="messagetitle" label="标题" clickorderby="true" >
+					<inputbox jsvalidate="isNotEmpty(${invalid.isnotempty})" type="textareabox"/>
+				</col>
+				<col column="messagecontent" label="内容" clickorderby="true" width="20%">
+					<inputbox jsvalidate="isNotEmpty(${invalid.isnotempty})" type="textareabox"/>
+				</col>
+				<col column="pushdate" label="发送时间" datatype="date{yyyy-MM-dd HH:mm:ss}" clickorderby="true" width="10%"></col>
+				<col column="pushToadmin" label="发送给管理员 ">
+					<inputbox>
+					         <typeprompt width="200" count="15">
+							       <promptcol value="adminid" label="showname" matchmode="anywhere"></promptcol>
+							       <datasource><option dataset="@{select adminid,showname from haooa_admin where {#matchcondition#}}"></option></datasource>
+					  	      </typeprompt>
+					     </inputbox>
+				</col>
+				<col column="pushToPolice" label="发送给民警">
+					<inputbox>
+					         <typeprompt width="200" count="15">
+							       <promptcol value="personid" label="policename" matchmode="anywhere"></promptcol>
+							       <datasource><option source="@{select policename,personid from police where {#matchcondition#}}"></option></datasource>
+					  	      </typeprompt>
+					     </inputbox>
+				</col>
+				<col column="isreaded" label="是否已读" clickorderby="true" width="20%">
+				</col>
+			</display>
+			<footer><![CDATA[<font color='red'></font>]]></footer>
+			<sql>
+				<select>
+				<value>
+					<![CDATA[SELECT * from messagepush where {#condition#} order by messageid]]>
+				</value>
+				</select>
+				 <insert>
+				  <params>
+			  	 	     <param name="currentdate" value="now{}" datatype="date{yyyy-MM-dd HH:mm:ss}"></param>
+			  	     </params>
+			  	     <value>
+				 insert into messagepush(@{messagetitle},@{messagecontent},pushdate=#{currentdate},@{pushToadmin},@{pushToPolice});
+				 </value>
+				 </insert>
+			  <update>
+			     update messagepush(@{messagetitle},@{messagecontent},@{pushdate},@{pushToadmin},@{pushToPolice}) where messageid=@{messageid};
+			  </update>
+			  <delete>
+			  	 delete from messagepush where messageid=@{messageid};
+			  </delete>
+			</sql>
+			<format>
+			  
+			     <value>
+			    <![CDATA[
+			  		if("1".equals(isreaded))
+			  			isreaded = "已读";
+			  		else 
+			  			isreaded = "未读";
+						]]>
+			  </value>
+			  </format>
+		</report>
+			</page>
+</applications>

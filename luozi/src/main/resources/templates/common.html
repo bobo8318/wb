@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>common</title>
+</head>
+<body>
+
+
+
+<header class="navbar navbar-default" th:fragment="header" id="header">
+    <div class="container">
+
+        <div class="navbar-header">
+            <div class="navbar-brand">骡子系统</div>
+
+            <ul class="nav navbar-nav">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">雷达</a></li>
+                <li><a href="#">数据管理</a></li>
+                <li><a href="/user/list">用户管理</a></li>
+                <li><a href="/log/list">日志管理</a></li>
+            </ul>
+
+
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" th:text="'欢迎：'+${session.name}"></a></li>
+            <li><a href="/exit">退出</a></li>
+        </ul>
+
+    </div>
+</header>
+
+
+
+<footer class="footer navbar-fixed-bottom navbar-default" th:fragment="footer" id="footer">
+    <div class="container">
+        郝文浩设计制作<br>
+
+    </div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baseweb.iml" filepath="$PROJECT_DIR$/.idea/modules/baseweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baseweb_main.iml" filepath="$PROJECT_DIR$/.idea/modules/baseweb_main.iml" group="baseweb" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baseweb_test.iml" filepath="$PROJECT_DIR$/.idea/modules/baseweb_test.iml" group="baseweb" />
+    </modules>
+  </component>
+</project>
