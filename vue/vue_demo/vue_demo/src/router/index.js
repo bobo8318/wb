@@ -8,6 +8,26 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path:'/msite',
+      name: 'msite',
+      component: resolve => require(['../components/learn/msite.vue'], resolve),
+    },
+    {
+      path:'/search',
+      name: 'search',
+      component: resolve => require(['../components/learn/search.vue'], resolve),
+    },
+    {
+      path:'/order',
+      name: 'order',
+      component: resolve => require(['../components/learn/order.vue'], resolve),
+    },
+    {
+      path:'/profile',
+      name: 'profile',
+      component: resolve => require(['../components/learn/profile.vue'], resolve),
+    },
+    {
       path:'/',
       redirect:'dashboard'
     },
