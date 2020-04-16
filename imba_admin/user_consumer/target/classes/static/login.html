@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="css/element.css">
+  <link href="css/main.css" rel="stylesheet">
+  <link href="plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+
+  <style>
+        .login-wrap{
+           position: relative;
+           width:100%;
+           height:100%;
+           background-image: url(images/login-bg.jpg);
+           background-size: 100%;
+       }
+       .ms-title{
+           font-family: '微软雅黑';
+           font-weight: bold;
+           width:100%;
+           line-height: 50px;
+           text-align: center;
+           font-size:23px;
+           color:rgba(57, 105, 238, 0.8);
+           border-bottom: 1px solid #ddd;
+           background: rgba(57, 105, 238, 0.151);
+
+       }
+       .ms-login{
+           position: absolute;
+           left:50%;
+           top:50%;
+           width:350px;
+           margin:-190px 0 0 -175px;
+           border-radius: 5px;
+           background: rgba(255,255,255, 0.3);
+           overflow: hidden;
+       }
+       .ms-content{
+           padding: 30px 30px;
+       }
+       .login-btn{
+           text-align: center;
+       }
+       .login-btn button{
+           width:100%;
+           height:36px;
+           margin-bottom: 10px;
+       }
+       .login-tips{
+           font-size:12px;
+           line-height:30px;
+           color:#fff;
+       }
+       </style>
+   </head>
+</head>
+<body>
+        <div id="login-wrap" class="login-wrap">
+                <div class="ms-login">
+                    <div class="ms-title">非凡引力数据分析-用户登录</div>
+                    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="ms-content">
+                        <el-row>
+                            <el-col :span="24">
+                                <el-form-item prop="phone">
+                                    <el-input v-model="ruleForm.phone" placeholder="手机号">
+                                        <el-button slot="prepend" icon="el-icon-lx-people"></el-button>
+                                    </el-input>
+                                </el-form-item>
+                            </el-col>
+                        </el-row>
+
+                        <el-row>
+                            <el-col :span="14">
+                                <el-form-item prop="code">
+
+                                    <el-input type="code" placeholder="验证码" v-model="ruleForm.code" @keyup.enter.native="dologin">
+                                        <el-button slot="prepend" icon="el-icon-lx-lock"></el-button>
+                                    </el-input>
+
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="10">
+                                    <el-button class="primary" v-on:click="sendCoder" :disabled="disabled=!show">
+                                            <span v-show="show">获取验证码</span>
+                                           <span v-show="!show" class="count">{{count}} s</span>
+                                       </el-button>
+                            </el-col>
+                        </el-row>
+
+                        <div class="login-btn">
+                               <el-button type="primary" @click="dologin">登录</el-button>
+                           </div>
+                   
+                    </el-form>
+        
+                
+                </div>
+            </div>
+</body>
+<script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+
+<script src="js/vue.min.js"></script>
+<script src="js/element.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/component/login.js"></script>
+<script src="js/localdata.js"></script>
+
+</html>

@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+.page div span {
+color: #999;
+font-size: 13px;
+border: none;
+}
+.page div .text {
+width: 35px;
+height: 50px;
+outline: none;
+}
+.page div .button {
+width: 46px;
+height: 50px;
+cursor: pointer;
+}
+.page div .text,
+.page div .button {
+text-align: center;
+border-radius: 2px;
+border: 1px solid #ededed;
+background: #fff;
+}
+.page div .text:focus,
+.page div .button:hover {
+color: #f40;
+border-color: #f40;
+}
+
+.page div {
+display: inline;
+}
+.page {
+display: flex;
+height: 50px;
+line-height: 50px;
+justify-content: center;
+}
+.page ul {
+    margin-top:2px;
+    height: 50px;
+    line-height: 50px;
+}
+.page ul li {
+display: inline-block;
+border: 1px solid #ededed;
+padding: 0 12px;
+color: #3e3e3e;
+font-size: 14px;
+font-family: tahoma,simsun;
+text-decoration: none;
+cursor: pointer;
+}
+.page ul li:not(.disabled):hover {
+color: #f40;
+border-color: #f40;
+}
+.page .active,
+.page .active:hover {
+color: #fff;
+background: #f40;
+border: solid 1px #f40;
+}
+
+.disabled{
+    background: rgb(243, 223, 215);
+    color: #3e3e3e;
+}

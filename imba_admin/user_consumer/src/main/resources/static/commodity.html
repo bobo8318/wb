@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>热销商品</title>
+
+
+    <link href="bootstrap/dist/css/index.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+    <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<style>
+tr{ border-bottom:1px solid #f2f2f2; cursor:pointer;}
+tr:hover{ background:#f2f2f2;}
+</style>
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
+    <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <v-header></v-header>
+        <!-- End Top Navigation -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <div class="navbar-default sidebar" role="navigation">
+           <sidebar/>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div style="width:100%; background:#fff; padding-top:20px;">
+                           <div class="form-group">
+                            <label style="display: block; width:100%; height:30px;">品类筛选:</label>
+							<searchtypepick @func="typeSelect"></searchtypepick>
+                        </div>
+                           
+                           <div style="padding:0px 20px; color:#000;">高级筛选：</div>
+                           <div style="width:100%; overflow:hidden;">
+                              <div class="list_grounding">
+                                 <span style="padding-left:20px;">上架日期：</span>
+
+                                 <div class="iDate">
+                                        <el-date-picker
+                                        v-model="searchForm.saleDateFrom"
+                                        type="datetime"
+                                        format="yyyy-MM-dd"
+                                        value-format="yyyy-MM-dd"
+                                        placeholder="选择开始日期">
+                                        </el-date-picker>
+                                    <!--input type="text" id="saleDateFrom"  v-model="searchForm.saleDateFrom"-->
+                                    <button type="button" class="addOn"></button>
+                                </div>
+                                <div class="iDate">
+                                        <el-date-picker
+                                        v-model="searchForm.saleDateTo"
+                                        type="datetime"
+                                        format="yyyy-MM-dd"
+                                        value-format="yyyy-MM-dd"
+                                        placeholder="选择结束日期">
+                                        </el-date-picker>
+                                    <!--input type="text" id="saleDateTo"  v-model="searchForm.saleDateTo"-->
+                                    <button type="button" class="addOn"></button>
+                                </div>
+
+                                
+
+                              </div>
+                                 
+                                 <span style="float:left; line-height:34px; padding-left:30px;">价格：</span>
+                                 <div class="lies_number">
+                                    <i style=" display:block; background:#f7f7f7; width:30px; text-align:center; cursor:pointer;border-radius:4px 0px 0px 4px; border-right:1px solid #f1f1f1; height:32px; line-height:32px; z-index:2; position:absolute;" @click="searchPriceFrom(-1)">&minus;</i>
+                                    <i style=" display:block; background:#f7f7f7; width:30px; text-align:center; cursor:pointer;border-radius:0px 4px 4px 0px; border-left:1px solid #f1f1f1; height:32px; line-height:32px; z-index:2; position:absolute; margin-left:98px;" @click="searchPriceFrom(1)">+</i>
+                                    <div>
+                                       <input v-model="searchForm.priceFrom" type="text" autocomplete="off" placeholder="0" max="Infinity" min="0" role="spinbutton" aria-valuemax="Infinity" aria-valuemin="0" aria-valuenow="0" aria-disabled="undefined" style="width:120px; text-align:center; border:0px; height:32px; line-height:32px; margin-left:5px;">
+                                    </div>
+                                 </div>
+                                 <span style="float:left; line-height:34px; padding:0px 10px;">至</span>
+                                 <div class="lies_number">
+                                    <i style=" display:block; background:#f7f7f7; width:30px; text-align:center; cursor:pointer;border-radius:4px 0px 0px 4px; border-right:1px solid #f1f1f1; height:32px; line-height:32px; z-index:2; position:absolute;"  @click="searchPriceTo(-1)" >&minus;</i>
+                                    <i style=" display:block; background:#f7f7f7; width:30px; text-align:center; cursor:pointer;border-radius:0px 4px 4px 0px; border-left:1px solid #f1f1f1; height:32px; line-height:32px; z-index:2; position:absolute; margin-left:98px;"  @click="searchPriceTo(1)">+</i>
+                                    <div>
+                                       <input type="text" v-model="searchForm.priceTo" autocomplete="off" placeholder="0" max="Infinity" min="0" role="spinbutton" aria-valuemax="Infinity" aria-valuemin="0" aria-valuenow="0" aria-disabled="undefined" style="width:120px; text-align:center; border:0px; height:32px; line-height:32px; margin-left:5px;">
+                                    </div>
+                                 </div>
+                                 
+                                 <span style="float:left; line-height:34px; padding-left:30px;">销售：</span>
+                                 <div class="lies_number">
+                                    <i style=" display:block; background:#f7f7f7; width:30px; text-align:center; cursor:pointer;border-radius:4px 0px 0px 4px; border-right:1px solid #f1f1f1; height:32px; line-height:32px; z-index:2; position:absolute;" @click="searchsaleVolumeFrom(-1)">&minus;</i>
+                                    <i style=" display:block; background:#f7f7f7; width:30px; priceFromtext-align:center; cursor:pointer;border-radius:0px 4px 4px 0px; border-left:1px solid #f1f1f1; height:32px; line-height:32px; z-index:2; position:absolute; margin-left:98px;" @click="searchsaleVolumeFrom(1)">+</i>
+                                    <div>
+                                       <input type="text" v-model="searchForm.saleVolumeFrom" autocomplete="off" placeholder="0" max="Infinity" min="0" role="spinbutton" aria-valuemax="Infinity" aria-valuemin="0" aria-valuenow="0" aria-disabled="undefined" style="width:120px; text-align:center; border:0px; height:32px; line-height:32px; margin-left:5px;">
+                                    </div>
+                                 </div>
+                                 <span style="float:left; line-height:34px; padding:0px 10px;">至</span>
+                                 <div class="lies_number">
+                                    <i style=" display:block; background:#f7f7f7; width:30px; text-align:center; cursor:pointer;border-radius:4px 0px 0px 4px; border-right:1px solid #f1f1f1; height:32px; line-height:32px; z-index:2; position:absolute;" @click="searchsaleVolumeTo(-1)">&minus;</i>
+                                    <i style=" display:block; background:#f7f7f7; width:30px; text-align:center; cursor:pointer;border-radius:0px 4px 4px 0px; border-left:1px solid #f1f1f1; height:32px; line-height:32px; z-index:2; position:absolute; margin-left:98px;" @click="searchsaleVolumeTo(1)">+</i>
+                                    <div>
+                                       <input type="text" v-model="searchForm.saleVolumeTo" autocomplete="off" placeholder="0" max="Infinity" min="0" role="spinbutton" aria-valuemax="Infinity" aria-valuemin="0" aria-valuenow="0" aria-disabled="undefined" style="width:120px; text-align:center; border:0px; height:32px; line-height:32px; margin-left:5px;">
+                                    </div>
+                                 </div>
+                                  <span style="float:left; line-height:34px; padding-left:30px;">状态：</span>
+                                  <div>
+
+                                <select v-model="searchForm.status"  style="width:70px; height:32px; border:1px solid #bbb; padding:0px 5px;border-radius:4px; background:url(ceshi/icon_sanjiao.jpg) no-repeat right;">
+                                    <option value="0">全部</option>
+                                    <option value="1">上架</option>
+                                    <option value="-1">下架</option>
+                                </select>
+
+                                  </div>
+
+
+                              <div style="width:100%; overflow:hidden; padding:30px 20px 30px 20px">
+                                 <span style="display:block; float:left;">
+                                    <input v-model="searchForm.q" type="text" style="width:400px; height:34px; border:1px solid #bbb; padding-left:5px;" value="请输入商品名称"></span>
+                                 <span style="background:#06F; padding:0px 20px; height:34px; line-height:34px; display:block; float:left; color:#fff; cursor: pointer;" @click="doSearch">搜索</span>
+                              </div>
+                           
+                           </div>
+                        </div>
+                    </div>
+                    
+                    <div style="width:100%; line-height:40px; text-align:right; font-size:12px; color:#888; padding-right:14px;">共 {{totalData}}条结果，最近更新时间为：{{recentDate}}</div>
+                    
+                    <div class="col-sm-12">
+                            <productlist @watchact="watchAction" @getdatas="turnpage" :showdatas="showdatas"  :showoptions="searchForm"  :totaldata="totalData" :sortby="sortby"></productlist>
+                    </div>
+                </div>
+
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+            <v-footer></v-footer>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
+
+
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/localdata.js"></script>
+<script src="js/component/common.js"></script>
+<script src="js/component/commodity.js"></script>
+<script src="js/index.js"></script>
+
+
+
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+    // date time picker
+    /*if($(".iDate.full").length>0){
+        $(".iDate.full").datetimepicker({
+            locale: "zh-cn",
+            format: "YYYY-MM-DD",
+            dayViewHeaderFormat: "YYYY年 MMMM",
+            
+        });
+    }
+    if($(".iDate.date").length>0){
+        $(".iDate.date").datetimepicker({
+            locale:"zh-cn",
+            format:"YYYY-MM-DD",
+            dayViewHeaderFormat:"YYYY年 MMMM"
+        });
+    }*/
+    
+});
+</script>
+
+</body>
+
+</html>

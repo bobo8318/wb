@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>热门店铺</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+    <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<style>
+tr{ border-bottom:1px solid #f2f2f2; cursor:pointer;}
+tr:hover{ background:#f2f2f2;}
+</style>
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
+    <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+      <v-header></v-header>
+        <!-- End Top Navigation -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav slimscrollsidebar">
+                <div class="sidebar-head">
+                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
+                            class="hide-menu">主页</span></h3>
+                </div>
+               <sidebar></sidebar>
+
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div style="width:100%; background:#fff; padding-top:20px;">
+                           <div class="form-group">
+							<label style="display: block; width:100%; height:30px;">品类筛选:</label>
+							<searchtypepick @func="typeSelect"></searchtypepick>
+                        </div>
+                           
+                           
+
+
+                              <div style="width:100%; overflow:hidden; padding:0px 20px 30px 20px">
+                                 <span style="display:block; float:left;">
+                                    <input type="text" v-model="searchForm.q" style="width:400px; height:34px; border:1px solid #bbb; padding-left:5px;" value="请输入店铺名称"></span>
+                                 <span @click="doSearch" style="background:#06F; padding:0px 20px; height:34px; line-height:34px; display:block; float:left; color:#fff; cursor: pointer;">搜索</span>
+                              </div>
+                           
+                           </div>
+                        </div>
+                    </div>
+                    
+                    <div style="width:100%; line-height:40px; text-align:right; font-size:12px; color:#888; padding-right:14px;">共 {{totalData}}条结果，最近更新时间为：{{recentDate}}</div>
+                    <shoplist @watchact="watchAction" :showoptions="searchForm" :showdatas="showDatas" :totaldata="totalData" :sortby="sortby" @getdatas="turnPage"></shoplist>
+
+                        
+                    </div>
+
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+            <v-footer></v-footer>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.min.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
+
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/localdata.js"></script>
+<script src="js/component/common.js"></script>
+<script src="js/component/hotshop.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
+    <title>非凡引力数据分析 - 后台管理界面</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="plugins/bower_components/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
+    <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <v-header></v-header>
+        <!-- End Top Navigation -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <div class="navbar-default sidebar" role="navigation">
+                <sidebar/>
+             </div>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                
+                <!-- /.row -->
+                <!-- ============================================================== -->
+                <!-- Different data widgets -->
+                <!-- ============================================================== -->
+                <!-- .row -->
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">商品总数</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class=" text-success">{{mainStat.prodCount}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">在售商品</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class=" text-purple">{{mainStat.hProdCount}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">动销商品</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash3"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">{{mainStat.mobileSale}}</span></li>
+                            </ul>
+                        </div>
+                    </div-->
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">新增商品</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class=" text-success">{{mainStat.nProdCount}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">店铺总数</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class=" text-purple">{{mainStat.shopCount}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">在线店铺</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash3"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class=" text-info">{{mainStat.hShopCount}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">动销店铺</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">{{mainStat.mobileSaleShop}}</span></li>
+                            </ul>
+                        </div>
+                    </div-->
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">上新店铺</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class=" text-purple">{{mainStat.nShopCount}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12" style="width:50%;">
+                        <div class="white-box analytics-info">
+                            <div class="chengjiao_qh">
+                               <span :style="(sales_pie_type=='1')?'background:#06F; color:#fff;':''"  @click="salePieTypePick('1')">销售数量</span>
+                               <span :style="(sales_pie_type=='2')?'background:#06F; color:#fff;':''" @click="salePieTypePick('2')">销售金额</span>
+                               
+                            </div>
+                            <dayspick @func="salePieDaysFromChild"></dayspick>
+                            <div id="chengjiao" style="width:100%; height: auto;"></div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12" style="width:50%;">
+                        <div class="white-box analytics-info">
+                            <div class="chengjiao_qh">
+                                <dayspick @func="newPieDaysFromChild"></dayspick>
+                                
+                          </div>
+                          <div>
+                            <searchtypepick  @func="new_stat_typeSelect"></searchtypepick>
+                          </div>
+                            <div id="shangxin" style="width:100%; height: auto;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.row -->
+                <!--row -->
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="white-box">
+                            
+                            <div style="width:100%; overflow:hidden">
+                                <div style="float:left;" class="box-title">趋势分析</div>
+                                <div style="float:right; padding-right:16px;">
+
+                                  <searchtypepick  @func="lineChartLevelPick"></searchtypepick>
+
+
+                                   <span :style="(lineChartDays==3)?'background:#06F; margin-left:30px; padding:10px; color:#fff;cursor:pointer;':'background:#f8f8f8; margin-left:30px; padding:10px; color:#555;cursor:pointer;'"  @click="lineChartDaysPick(3)">前3天</span>
+                                   <span :style="(lineChartDays==7)?'background:#06F; margin-left:30px; padding:10px; color:#fff;cursor:pointer;':'background:#f8f8f8; margin-left:30px; padding:10px; color:#555;cursor:pointer;'"  @click="lineChartDaysPick(7)">前7天</span>
+                                   <span :style="(lineChartDays==15)?'background:#06F; margin-left:30px; padding:10px; color:#fff;cursor:pointer;':'background:#f8f8f8; margin-left:30px; padding:10px; color:#555;cursor:pointer;'"  @click="lineChartDaysPick(15)">前15天</span>
+                                   <span :style="(lineChartDays==30)?'background:#06F; margin-left:30px; padding:10px; color:#fff;cursor:pointer;':'background:#f8f8f8; margin-left:30px; padding:10px; color:#555;cursor:pointer;'"  @click="lineChartDaysPick(30)">前30天</span>
+                                   <span :style="(lineChartDays==60)?'background:#06F; margin-left:30px; padding:10px; color:#fff;cursor:pointer;':'background:#f8f8f8; margin-left:30px; padding:10px; color:#555;cursor:pointer;'"  @click="lineChartDaysPick(60)">前60天</span>
+                                   <span :style="(lineChartDays==90)?'background:#06F; margin-left:30px; padding:10px; color:#fff;cursor:pointer;':'background:#f8f8f8; margin-left:30px; padding:10px; color:#555;cursor:pointer;'"  @click="lineChartDaysPick(90)">前90天</span>
+                                </div>
+                            </div>
+                            
+                            
+                            <div id="ct-visits" style="height: 405px; margin-top:30px;"></div>
+                            
+                            <div class="trend">
+                               <div class="trend_content">
+                                  <p :style="(lineChartType=='1')?'background:#06F; color:#fff;':''" @click="lineChartTypePick(1)">交易量</p>
+                                  <p :style="(lineChartType=='2')?'background:#06F; color:#fff;':''"  @click="lineChartTypePick(2)">供应商</p>
+                                  <p :style="(lineChartType=='3')?'background:#06F; color:#fff;':''"  @click="lineChartTypePick(3)">在售商品均价</p>
+                               </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- table -->
+                <!-- ============================================================== -->
+                
+                <!-- ============================================================== -->
+                <!-- chat-listing & recent comments -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div style=" padding:0px 0px 20px 20px; font-size:20px;">TOP商品排行榜</div>
+                    <!-- .col -->
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">昨日爆款<span style="padding-left:30px; font-size:12px; color:#ccc;">前一天销量排行</span></h3>
+                            <toplist :productList="top_product.yesterdayBest"></toplist>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">潜力新秀<span style="padding-left:30px; font-size:12px; color:#ccc;">上线3天内销量排行</span></h3>
+                            <toplist :productlist="top_product.newBest"></toplist>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">常青榜<span style="padding-left:30px; font-size:12px; color:#ccc;">上线30以上销量排行</span></h3>
+                            <toplist :productlist="top_product.everbest"></toplist>
+
+                          
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                
+                <div class="row">
+                    <div style=" padding:0px 0px 20px 20px; font-size:20px;">TOP店铺排行榜</div>
+                    <!-- .col -->
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">昨日爆款</h3>
+                            <toplist :productlist="top_shop.yesterdayBest"></toplist>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">潜力新秀</h3>
+                            <toplist :productlist="top_shop.newBest"></toplist>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">常青榜</h3>
+                            <toplist :productlist="top_shop.everbest"></toplist>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+            <v-footer></v-footer>
+        </div>
+        
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    
+    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Counter js -->
+    <script src="plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
+    <script src="plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+    <!-- chartist chart -->
+    <script src="plugins/bower_components/chartist-js/dist/chartist.min.js"></script>
+    <script src="plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="plugins/bower_components/chartist-plugin-pointlabels-master/dist/chartist-plugin-pointlabels.min.js"></script>
+    <!-- Sparkline chart JavaScript -->
+    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script src="js/dashboard1.js"></script>
+    <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+    <script src="js/highcharts.js"></script>
+
+    <script src="js/vue.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/localdata.js"></script>
+    <script src="js/component/common.js"></script>
+    <script src="js/component/index.js"></script>
+
+</body>
+
+</html>

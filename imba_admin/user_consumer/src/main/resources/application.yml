@@ -1,0 +1,36 @@
+
+myconfig:
+  datahost: localhost:8080
+  userhost: localhost:8080
+server:
+  port: 8888
+# 服务名称
+spring:
+  application:
+    name: user-consumer
+
+  mvc:
+    view:
+      suffix: .html
+      prefix: /static/pages/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10000/eureka/
+feign:
+  okhttp:
+    enabled: false
+  httpclient:
+    enabled: true
+hystrix:
+    command:
+        default:
+            circuitBreaker:
+                sleepWindowInMilliseconds: 100000
+                forceClosed: true
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
+    shareSecurityContext: true
