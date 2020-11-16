@@ -1,9 +1,9 @@
 # 服务名称
 smsconfig:
-  accessKeyId: LTAI5RtDsr00icKe
-  accessSecret: z9aDgsM3wiTURBMj6fv3Lfe5626yr1
+  accessKeyId: 
+  accessSecret: 
   signName: imbapub
-  templateCode: SMS_181210414
+  templateCode: 
 spring:
   application:
     name: user-service
@@ -14,7 +14,7 @@ spring:
       driver-class-name: org.mariadb.jdbc.Driver
       url: jdbc:mariadb://localhost:3308/imba_admin?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       username: root
-      password: xtc81389170
+      password: 
       type: com.alibaba.druid.pool.DruidDataSource
       # 连接池补充配置
       # 初始化大小，最小，最大
